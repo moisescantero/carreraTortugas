@@ -1,24 +1,33 @@
-import pygame
-from pygame.locals import *
-import sys
+"""este es el objeto carrera"""
+import turtle
 
-class Race():
-    def __init__(self, width, height):
-        self.size = (width, height)
-        self.title = "Carrera automática"
-        
-        self.background = pygame.image.load("assets/background.png")
+class Circuito():
+    corredores = []
+    __posStartY = (-30,-10,10,30)
+    __colorTurtle = ("red","blue","green","orange")
     
-    def launch(self):
-        pygame.font.init()
-        pygame.init()
-        self.screen = pygame.display.set_mode(self.__size, pygame.HWSURE)
-        pygame.display.set_caption(self.__title)
+    def __init__(self, width, height):
+        self.__screen = turtle.Screen()
+        self.__screen.setup(width, height)
+        self.__screen.bgcolor("lightgray")
+        self.__startLine = -width/2 + 20
+        self.__finishLine = width/2 - 20
         
-        winner = False
-        
-        while not winner:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+        self.__createRunners()    
+
+    def __createRunners(self):
+        for i in range(4):
+            new_turtle = turtle.Turtle()
+            new_turtle.color(self.__colorTurtle[i])
+            new_turtle.shape("turtle")
+            new_turtle.penup()
+            new_turtle.setpos(self.__startLine, self.__posStartY[i])
+            
+            self.corredores.append(new_turtle)
+            
+
+
+
+
+if __name__ == "__main__":
+    circuito = Circuito(640,480)
