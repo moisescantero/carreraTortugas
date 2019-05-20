@@ -1,1 +1,1 @@
-Aquí irán las instrucciones de instalación de mi proyecto. 
+proyecto que muestra como utilizar objeto turtle para hacer una carrera.
